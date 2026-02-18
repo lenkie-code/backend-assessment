@@ -1,7 +1,4 @@
 using BackendAssessment.Api.Middleware;
-using BackendAssessment.Application.Commands;
-using BackendAssessment.Domain.Interfaces;
-using BackendAssessment.Infrastructure.Messaging;
 using BackendAssessment.Infrastructure.Persistence;
 using Hangfire;
 using Hangfire.PostgreSql;
@@ -30,20 +27,15 @@ try
 
     // Register MediatR v14 — scan the Application assembly for handlers
     builder.Services.AddMediatR(cfg =>
-        cfg.RegisterServicesFromAssembly(typeof(CreateSampleCommandHandler).Assembly));
+        cfg.RegisterServicesFromAssemblyContaining<Program>());
 
     // Register EF Core with PostgreSQL
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-    // Register repositories
-    builder.Services.AddScoped<ISampleRepository, SampleRepository>();
-
     // Register MassTransit v8 with RabbitMQ
     builder.Services.AddMassTransit(x =>
     {
-        x.AddConsumer<SampleEntityCreatedEventConsumer>();
-
         x.UsingRabbitMq((context, cfg) =>
         {
             cfg.Host(builder.Configuration.GetValue<string>("RabbitMQ:Host") ?? "localhost", "/", h =>

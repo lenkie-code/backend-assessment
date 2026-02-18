@@ -8,7 +8,7 @@ A pre-configured boilerplate for a backend engineering technical assessment, bui
 
 This project serves as a scaffold for a backend engineering assessment. It provides a fully configured development environment with all necessary infrastructure (PostgreSQL, RabbitMQ) running via Docker Compose. The codebase follows Clean Architecture / Onion Architecture with DDD patterns, giving candidates a production-grade foundation to build upon.
 
-The boilerplate includes stub implementations with comprehensive XML documentation explaining what each method should do. Candidates are expected to implement the business logic during their interview session.
+Candidates are expected to build upon this foundation during their interview session.
 
 ---
 
@@ -46,8 +46,8 @@ This project follows the **Onion Architecture** pattern, where dependencies flow
 
 This project applies the **CQRS pattern** via MediatR:
 
-- **Commands** (write operations) are handled by command handlers that modify state. Example: `CreateSampleCommand` creates a new entity.
-- **Queries** (read operations) are handled by query handlers that return data without modifying state. Example: `GetSampleByIdQuery` retrieves an entity by Id.
+- **Commands** (write operations) are handled by command handlers that modify state.
+- **Queries** (read operations) are handled by query handlers that return data without modifying state.
 
 ---
 
@@ -150,39 +150,25 @@ backend-assessment/
 │
 ├── src/
 │   ├── BackendAssessment.Domain/           # Core domain layer (no external dependencies)
-│   │   ├── Entities/
-│   │   │   └── SampleEntity.cs             # Domain entity with factory method and domain events
-│   │   ├── ValueObjects/
-│   │   │   └── Money.cs                    # Value object for monetary amounts
-│   │   ├── Events/
-│   │   │   └── SampleEntityCreatedEvent.cs # Domain event raised on entity creation
-│   │   └── Interfaces/
-│   │       └── ISampleRepository.cs        # Repository interface (abstraction)
+│   │   ├── Entities/                       # Domain entities
+│   │   ├── ValueObjects/                   # Value objects
+│   │   ├── Events/                         # Domain events
+│   │   └── Interfaces/                     # Repository and service interfaces
 │   │
 │   ├── BackendAssessment.Application/      # Application layer (use cases)
-│   │   ├── Commands/
-│   │   │   ├── CreateSampleCommand.cs      # Command record for creating entities
-│   │   │   └── CreateSampleCommandHandler.cs # Handler stub (implements IRequestHandler)
-│   │   ├── Queries/
-│   │   │   ├── GetSampleByIdQuery.cs       # Query record for fetching by Id
-│   │   │   └── GetSampleByIdQueryHandler.cs # Handler stub (implements IRequestHandler)
-│   │   └── DTOs/
-│   │       ├── SampleDto.cs                # Full entity DTO
-│   │       └── SampleSummaryDto.cs         # Lightweight summary DTO
+│   │   ├── Commands/                       # Command records and handlers
+│   │   ├── Queries/                        # Query records and handlers
+│   │   └── DTOs/                           # Data transfer objects
 │   │
 │   ├── BackendAssessment.Infrastructure/   # Infrastructure layer (implementations)
 │   │   ├── Persistence/
-│   │   │   ├── AppDbContext.cs             # EF Core DbContext with entity configuration
-│   │   │   ├── SampleRepository.cs         # Repository implementation
+│   │   │   ├── AppDbContext.cs             # EF Core DbContext
 │   │   │   └── Migrations/                 # EF Core migrations
-│   │   ├── Messaging/
-│   │   │   └── SampleEntityCreatedEventConsumer.cs # MassTransit consumer stub
-│   │   └── Jobs/
-│   │       └── SampleFollowUpJob.cs        # Hangfire job stub
+│   │   ├── Messaging/                      # MassTransit consumers
+│   │   └── Jobs/                           # Hangfire background jobs
 │   │
 │   └── BackendAssessment.Api/              # API layer (entry point)
-│       ├── Controllers/
-│       │   └── SampleController.cs         # REST controller with POST and GET endpoints
+│       ├── Controllers/                    # REST controllers
 │       ├── Middleware/
 │       │   └── ExceptionHandlingMiddleware.cs # Global exception handler
 │       ├── Program.cs                      # Application bootstrap and DI configuration
@@ -190,8 +176,7 @@ backend-assessment/
 │       └── appsettings.Development.json    # Docker/development configuration
 │
 └── tests/
-    └── BackendAssessment.Tests/            # Unit tests
-        └── CreateSampleCommandHandlerTests.cs # Test scaffolds with xUnit + NSubstitute
+    └── BackendAssessment.Tests/            # Unit tests (xUnit + NSubstitute + FluentAssertions)
 ```
 
 ---
