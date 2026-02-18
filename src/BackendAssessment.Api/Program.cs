@@ -86,8 +86,11 @@ try
 
     app.UseAuthorization();
 
-    // Hangfire dashboard
-    app.UseHangfireDashboard("/hangfire");
+    // Hangfire dashboard — allow remote access in development (runs inside Docker)
+    app.UseHangfireDashboard("/hangfire", new DashboardOptions
+    {
+        Authorization = new[] { new HangfireAllowAllAuthorizationFilter() }
+    });
 
     // Map traditional controllers
     app.MapControllers();
@@ -101,4 +104,13 @@ catch (Exception ex)
 finally
 {
     Log.CloseAndFlush();
+}
+
+/// <summary>
+/// Allows all requests to the Hangfire dashboard (development use only).
+/// Required because the app runs inside Docker, making browser requests appear non-local.
+/// </summary>
+public class HangfireAllowAllAuthorizationFilter : Hangfire.Dashboard.IDashboardAuthorizationFilter
+{
+    public bool Authorize(Hangfire.Dashboard.DashboardContext context) => true;
 }
