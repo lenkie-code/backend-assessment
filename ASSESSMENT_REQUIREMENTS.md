@@ -8,7 +8,7 @@ Welcome! We're looking forward to your upcoming technical interview. This docume
 
 ## 1. Overview
 
-This is a **live coding assessment** lasting **60-90 minutes**. You'll be given a specific feature to build using a pre-configured boilerplate that follows Clean Architecture with Domain-Driven Design principles.
+This is a **live coding assessment** lasting **90 minutes**. You'll be given a specific feature to build using a pre-configured boilerplate that follows Clean Architecture with Domain-Driven Design principles.
 
 The goal is to assess your software engineering skills, decision-making, and problem-solving approach. There are no trick questions or hidden gotchas — we want to see how you work through a realistic backend task.
 
@@ -72,7 +72,7 @@ Links to relevant documentation are provided in the README.
 
 ### Interview Format
 
-- **60-90 minute** live coding session
+- **90 minute** live coding session
 - You'll receive a specific feature to implement using the boilerplate
 - You'll **share your screen** while coding
 - You can use whatever tools and resources you normally use when coding
