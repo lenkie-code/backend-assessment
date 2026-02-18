@@ -45,7 +45,7 @@ Please complete these steps **before your interview day**:
    | Hangfire Dashboard  | [http://localhost:8080/hangfire](http://localhost:8080/hangfire) | Job dashboard with no errors                  |
    | RabbitMQ Management | [http://localhost:15672](http://localhost:15672)                 | Login page (user: `guest`, password: `guest`) |
 
-5. **If you encounter issues**, consult the Troubleshooting section in the README. If problems persist, reach out to **[contact email]** at least **24 hours before your interview** so we can help resolve them.
+5. **If you encounter issues**, consult the Troubleshooting section in the README. If problems persist, reach out to **kennedy@lenkie.com** at least **24 hours before your interview** so we can help resolve them.
 
 ### Familiarize Yourself with the Stack
 
@@ -125,7 +125,7 @@ You won't necessarily need to cover all of these — the specific feature will d
 
 ## 6. Questions?
 
-If you have questions about the assessment or run into technical setup issues, please contact **[contact email]**.
+If you have questions about the assessment or run into technical setup issues, please contact **kennedy@lenkie.com**.
 
 We ask that you reach out **at least 24 hours before your interview** if you're having trouble getting the environment running, so we have time to help.
 
