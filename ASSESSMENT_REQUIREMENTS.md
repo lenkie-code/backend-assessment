@@ -1,4 +1,4 @@
-# Backend Engineering Assessment - Pre-Interview Setup
+# Backend Engineering Assessment - Pre-Interview Guide
 
 Welcome! We're looking forward to your upcoming technical interview. This document will help you prepare so you can focus on what matters during the session: writing great code.
 
