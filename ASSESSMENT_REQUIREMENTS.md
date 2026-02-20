@@ -118,7 +118,6 @@ You won't necessarily need to cover all of these — the specific feature will d
 - **Think out loud** — we want to understand your thought process, not just see the final result
 - **Ask clarifying questions** — if requirements are ambiguous, ask. This is a sign of good engineering practice, not a weakness
 - **Focus on working code first** — get something functional before optimizing
-- **Write tests as you go** — don't leave them all to the end
 - **Be prepared to explain your choices** — there's often no single right answer, but we want to hear your reasoning
 
 ---
